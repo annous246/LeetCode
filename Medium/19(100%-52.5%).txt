@@ -1,0 +1,17 @@
+
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int k=0;ListNode *aux=head;
+        while(aux){
+            k++;aux=aux->next;
+        }aux=head;int i=1;ListNode* p=head;
+        while(aux){
+            if(i==k-n+1){if(p==aux)return p->next;
+              p->next=aux->next;
+              aux->next=NULL;break;
+            }i++;
+            p=aux;aux=aux->next;
+        }return head;
+    }
+};

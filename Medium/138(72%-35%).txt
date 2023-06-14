@@ -1,0 +1,20 @@
+
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        unordered_map<Node*,int>m;
+        unordered_map<int,Node*>s;
+        Node *aux=head;int i=0;if(!aux)return NULL; Node *head2=new Node(aux->val),*aux2=head2;
+        while(aux){m[aux]=i;aux=aux->next;s[i]=aux2;if(!aux)break;
+          Node *p=new Node(aux->val);aux2->next=p;
+          i++;aux2=aux2->next;
+        }
+        aux=head;aux2=head2;
+        while(aux){
+            if(aux->random){
+                aux2->random=s[m[aux->random]];
+            }aux=aux->next;aux2=aux2->next;
+        }return head2;
+
+    }
+};
