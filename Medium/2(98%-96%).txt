@@ -1,0 +1,34 @@
+
+class Solution {
+public:
+int len(ListNode* l){ListNode *x=l;int v=0;
+    while(x){v++;x=x->next;}return v;
+}
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *aux;int k=0,v=0;
+        if(len(l1)>len(l2)){ListNode *head1=l1;
+            while(l1){aux=l1;
+                k=l1->val;
+                if(l2)k+=l2->val;
+                k+=v;
+                v=k/10;l1->val=k%10;
+            if(l2)l2=l2->next;l1=l1->next;
+            }if(v!=0){
+                ListNode *p=new ListNode(1);aux->next=p;
+            }
+        return head1;
+        }
+        else{ListNode *head2=l2;
+            while(l2){aux=l2;
+                k=l2->val;
+                if(l1)k+=l1->val;
+                k+=v;
+                v=k/10;l2->val=k%10;
+            if(l1)l1=l1->next;l2=l2->next;
+            }if(v!=0){
+                ListNode *p=new ListNode(1);aux->next=p;
+            }
+             return head2;
+        }
+    }
+};
