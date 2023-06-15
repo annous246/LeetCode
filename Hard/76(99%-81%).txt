@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        if(s.length()<t.length())return "";
+        int n=(int)'z'+1-65;int *m=new int[n](),*m2=new int[n]();
+        int j=0,c=0,len=0,ll=0,r=-1;
+        for(char v:t){m2[(int)v-65]++;if(m2[(int)v-65]==1)len++;}
+        string ans="";int min=s.length()+1;
+        for(int i=0;i<s.size();i++){
+        if(m2[(int)s[i]-65]==0)continue;
+            if(c<len){m[(int)s[i]-65]++;if(m[(int)s[i]-65]==m2[(int)s[i]-65])c++;}
+            if(c==len){
+                while(j<=i){
+                        if(min>(i-j+1)&&m[(int)s[j]-65]==m2[(int)s[j]-65]){
+                        min=i-j+1;ll=j;r=i;
+                    }
+                    if(m2[(int)s[j]-65]!=0)m[(int)s[j]-65]--;
+                    if(m[(int)s[j]-65]<m2[(int)s[j]-65]){
+                        c--;j++;break;
+                    }
+                    
+                    j++;
+                    
+
+                }
+            }
+        }
+        
+        ans=s.substr(ll,r-ll+1);
+	delete [] m;
+	delete [] m2;
+        return ans;
+    }
+};
