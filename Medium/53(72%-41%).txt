@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& a) {
+        int ans=-10001,s=0;
+        for(int i=0;i<a.size();i++){
+           s+=a[i];
+           ans=max(s,ans);
+           if(s<0)s=0;
+        }return ans;
+    }
+};
