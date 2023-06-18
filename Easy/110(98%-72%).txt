@@ -1,0 +1,16 @@
+
+class Solution {
+public:
+int max_depth(TreeNode* r){
+    if(r){
+    return 1+max(max_depth(r->right),max_depth(r->left));
+    }return 0;
+
+}
+    bool isBalanced(TreeNode* root) {
+        if(root){
+            
+            return (abs(max_depth(root->right)-max_depth(root->left))<2)&&isBalanced(root->left)&&isBalanced(root->right);
+        }return true;
+    }
+};
