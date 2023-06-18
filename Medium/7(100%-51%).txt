@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int reverse(int x) {
+     long long k=(long long)abs(x), lx=0;
+     while(k){
+         lx+=k%10;
+         lx*=10;k/=10;
+     }lx/=10;cout<<lx;
+         if(lx>2147483647+(long long)(x<0))return 0;
+         return (int)(lx-lx*(x<0)*2) ;
+     
+    }
+};
