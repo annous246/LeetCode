@@ -1,0 +1,22 @@
+
+class Solution {
+public:
+    vector<vector<int>> k;
+    vector<int> v;
+    void lo(TreeNode* root,int dp){
+        if(root){
+            if(k.size()<dp){
+             k.push_back(v);
+             
+            }
+             k[dp-1].push_back(root->val);
+            lo(root->left,dp+1);
+            lo(root->right,dp+1);
+            
+        }
+    }
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        lo(root,1);
+        return k;
+    }
+};

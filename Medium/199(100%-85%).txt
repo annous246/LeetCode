@@ -1,0 +1,17 @@
+
+class Solution {
+public:
+   vector<int> ans;
+   int maxdep=0;
+    void rsv(TreeNode* root,int dp){
+        if(root){
+            if(dp>maxdep){ans.push_back(root->val);maxdep=dp;}
+            rsv(root->right,dp+1);
+            rsv(root->left,dp+1);}
+
+    }
+    vector<int> rightSideView(TreeNode* root) {
+        rsv(root,1);
+        return ans;
+    }
+};
