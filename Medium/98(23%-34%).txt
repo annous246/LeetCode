@@ -1,0 +1,22 @@
+
+class Solution {
+public:
+            bool k=true;
+            long long maxb(TreeNode* root){
+                if(root){
+                    return max((long long)root->val,max(maxb(root->left),maxb(root->right)));
+
+                }return -21474836480;
+            }
+            long long minb(TreeNode* root){
+                if(root){
+                    return min((long long)root->val,min(minb(root->left),minb(root->right)));
+
+                }return 21474836470;
+            }
+    bool isValidBST(TreeNode* root) {
+        if(root){cout<<minb(root->right);
+            return (maxb(root->left)<(long long)root->val)&&(minb(root->right)>(long long)root->val)&&isValidBST(root->left)&&isValidBST(root->right);
+        }return true;
+    }
+};

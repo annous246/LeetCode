@@ -1,0 +1,18 @@
+
+class Solution {
+public:
+int gnd=0;
+    void gn(TreeNode* root,int mx){
+        if(root){
+        if(mx<=root->val)gnd++;
+        gn(root->right,max(mx,root->val));
+        gn(root->left,max(mx,root->val));
+
+        }
+    }
+    int goodNodes(TreeNode* root) {
+        gn(root,-10000);
+        return gnd;
+        
+    }
+};

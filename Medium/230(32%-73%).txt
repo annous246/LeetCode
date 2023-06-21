@@ -1,0 +1,22 @@
+
+class Solution {
+public:
+ int ans=0,sv=0;
+    void l(TreeNode* root, int& k) {
+        
+        if(root){
+            l(root->left,k);k--;
+            if(k==0&&!ans){
+                ans=root->val;
+            }cout<<k;
+            l(root->right,k);
+
+        }
+
+
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        l(root,k);
+        return ans;
+    }
+};
