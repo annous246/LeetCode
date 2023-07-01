@@ -1,0 +1,16 @@
+class Solution {
+public:
+bool static cmp(vector<int> a,vector<int> b){
+    return sqrt(pow(a[0],2)+pow(a[1],2))> sqrt(pow(b[0],2)+pow(b[1],2));
+}
+    vector<vector<int>> kClosest(vector<vector<int>>& p, int k) {
+        vector<vector<int>> a;
+        priority_queue <vector<int>,vector<vector<int>>,function<bool(vector<int> b,vector<int> a)>> q(cmp);
+        for(vector<int> l:p)
+        q.push(l);
+        while(k){
+            a.push_back(q.top());q.pop();k--;
+        }
+        return a;
+    }
+};

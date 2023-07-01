@@ -1,0 +1,69 @@
+class Trie {
+string word;
+Trie *left,*right;
+public:map<string,int>m,s;
+    Trie() {
+        word=" ";
+        left=NULL;
+        right=NULL;
+        
+    }
+    Trie(string word) {
+        this->word=word;
+        left=NULL;
+        right=NULL;
+        
+    }
+    
+    void insert(string word) {string aux="";int n=word.length();
+        for(int i=0;i<n;i++){
+           aux.push_back(word[i]);
+           m[aux]++;
+        }s[word]++;
+        Trie *head=this,*p=new Trie(word);
+        if(head->word[0]==' '){
+            head->word=word;
+        }
+        else{
+        
+        int cm;e:cm=word.compare(this->word);
+        if(cm>=0){
+            if(head->right){
+                       head=head->right;goto e;
+            }
+            else{head->right=p;
+
+            }
+        }
+        else{
+            if(head->left){
+                       head=head->left;goto e;
+
+            }
+            else{head->left=p;
+
+
+            }
+
+        }}
+        
+    }
+    
+    bool search(string word) {
+        return s[word];
+    }
+    
+    bool startsWith(string prefix) {
+        return m[prefix];
+
+        
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */

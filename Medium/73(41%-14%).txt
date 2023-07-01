@@ -1,0 +1,15 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& m) {
+        map<int,int>mp,c;int n=m.size(),mm=m[0].size();
+        for(int i=0;i<n;i++){
+        for(int j=0;j<mm;j++){
+if(!m[i][j]){mp[i]=1;c[j]=1; }  
+    }}
+        for(int i=0;i<n;i++){
+        for(int j=0;j<mm;j++){
+            if(mp[i]==1||c[j]==1)m[i][j]=0;
+        }}
+
+    }
+};
