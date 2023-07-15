@@ -1,0 +1,35 @@
+class Solution {
+public:
+vector<vector<int>> ans;
+    int sum(vector<int> &temp){
+       int s=0;
+       for(int i:temp)s+=i;return s;}
+    void backtracker(int i,vector<int>& a,vector<int>&temp,int t,int s){
+        
+     if(s==t){
+         ans.push_back(temp);return; 
+     }
+     if(s>t||i==a.size()){
+      return;
+     }    int prev=-1;
+         for(int j=i;j<a.size();j++){
+         if(prev==a[j])continue;
+             temp.push_back(a[j]);
+             backtracker(j+1,a,temp,t,a[j]+s);prev=a[j];
+             if(s+a[j]>=t){
+             temp.pop_back();return;}
+             temp.pop_back();
+         }
+ 
+     
+     
+    }
+    vector<vector<int>> combinationSum2(vector<int>& a, int t) {
+        vector<int> temp;
+             sort(a.begin(),a.end());
+        backtracker(0,a,temp,t,0);
+        set<vector<int>> res(ans.begin(),ans.end());
+        vector<vector<int>> rs(res.begin(),res.end());
+                return rs;
+    }
+};

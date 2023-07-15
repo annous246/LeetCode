@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& a) {
+        priority_queue p(a.begin(),a.end());
+        int ok=0,w=0;
+        while(!empty(p)){
+         if(!ok){w=p.top();p.pop();}
+         else{
+             w=abs(w-p.top());p.pop();p.push(w);
+         }ok=1-ok;
+
+        
+        }return w;
+    }
+};

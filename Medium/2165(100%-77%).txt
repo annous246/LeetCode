@@ -1,0 +1,31 @@
+class Solution {
+public:
+    long long smallestNumber(long long num) {
+        int *a=new int[10]();
+        long long ans=0;
+
+        int sg=(num<0)?0:1;
+        while(num){
+            a[abs(num)%10]++;num/=10;
+        }
+        if(sg){
+        for(int i=1;i<10;i++){
+            if(a[i]){a[i]--;ans+=i;ans*=10;
+                 while(a[0]-->0)ans*=10;
+                 while(a[i]--){ans+=i;ans*=10;}
+            }
+        }ans/=10;
+
+        }
+        else{
+        for(int i=9;i>-1;i--){
+            if(a[i]){
+                 while(a[i]--){ans+=i;ans*=10;}
+            }
+        }ans/=10;
+
+
+        }
+return ans*(sg-(!sg));
+    }
+};

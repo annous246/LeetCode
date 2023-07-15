@@ -1,0 +1,16 @@
+class Solution {
+public:
+    void rotate(vector<vector<int>>& m) {
+        vector<vector<int>>v;
+        vector<int>k;
+        for(int i=0;i<m.size();i++)k.push_back(0);
+        for(int i=0;i<m.size();i++)v.push_back(k);
+        
+        
+        for(int i=0;i<m[0].size();i++){
+        for(int j=0;j<m[0].size();j++){
+            int x=m[i][j];
+            v[j][m[0].size()-i-1]=x;
+        }}m=v;
+    }
+};

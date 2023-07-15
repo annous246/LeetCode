@@ -1,0 +1,27 @@
+class Solution {
+public: vector<vector<int>> ans;
+map<vector<int>,int>m;
+void prt(vector<int>p){
+    for(int i:p)cout<<i<<" ";cout<<endl;
+}
+void backtrack(int i,vector<int> &a,vector<int>& temp){
+if(i==a.size()){return;}
+for(int j=i;j<a.size();j++){
+    temp.push_back(a[j]);
+    if(!m[temp]++)
+    ans.push_back(temp);
+    backtrack(j+1,a,temp);
+    temp.pop_back();
+}
+
+
+}
+    vector<vector<int>> subsetsWithDup(vector<int>& a) {
+        vector<int> temp;
+        sort(a.begin(),a.end());
+       backtrack(0,a,temp);
+       ans.push_back(temp);
+       return ans;
+
+    }
+};

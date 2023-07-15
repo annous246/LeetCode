@@ -1,0 +1,20 @@
+class Solution {
+public:
+vector<vector<int>> ans;
+map<int,int>m;
+void back(vector<int>& a,vector<int>& temp){
+   if(temp.size()==a.size()){ans.push_back(temp);return;}
+   for(int i=0;i<a.size();i++){
+       if(m[a[i]])continue;
+       temp.push_back(a[i]);m[a[i]]=1;
+       back(a,temp);
+       temp.pop_back();m[a[i]]=0;
+
+   }
+}
+    vector<vector<int>> permute(vector<int>& a) {
+        vector<int>temp;
+        sort(a.begin(),a.end());
+        back(a,temp);return ans;
+    }
+};
